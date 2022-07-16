@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-y_(dl8cgi-_*vssic583us$=%(#bqar!mi(8s_7^al3c0+^@!k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['omole-emmanuel-flutterwave.herokuapp.com', 'www.omole-emmanuel-flutterwave.herokuapp.com']
 
 
 # Application definition
