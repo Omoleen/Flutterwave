@@ -25,21 +25,21 @@ class TransactionView(APIView):
                         elif i['Amount'] < 0:
                             custom = {'message': f'Split Amount for {i.get("SplitEntityId")} is lesser than Zero'}
                             return Response(custom, status=status.HTTP_400_BAD_REQUEST)
-                        print(f'{initbalance}')
+                        # print(f'{initbalance}')
                 if len(percentage) > 0:
                     for i in percentage:
                         i['Amount'] = i.get('SplitValue')/100 * initbalance
                         initbalance -= i.get('Amount')
                         i.pop('SplitValue')
                         i.pop('SplitType')
-                        print(i['Amount'])
+                        # print(i['Amount'])
                         if i['Amount'] > request.data.get('Amount'):
                             custom = {'message': f'Split Amount for {i.get("SplitEntityId")} greater than Transaction Amount'}
                             return Response(custom, status=status.HTTP_400_BAD_REQUEST)
                         elif i['Amount'] < 0:
                             custom = {'message': f'Split Amount for {i.get("SplitEntityId")} is lesser than Zero'}
                             return Response(custom, status=status.HTTP_400_BAD_REQUEST)
-                        print(f'{initbalance}')
+                        # print(f'{initbalance}')
                 if len(ratio) > 0:
                     ratiobal = initbalance
                     sumtotal = sum([a.get('SplitValue') for a in ratio])
@@ -48,14 +48,14 @@ class TransactionView(APIView):
                         initbalance -= i.get('Amount')
                         i.pop('SplitValue')
                         i.pop('SplitType')
-                        print(i['Amount'])
+                        # print(i['Amount'])
                         if i['Amount'] > request.data.get('Amount'):
                             custom = {'message': f'Split Amount for {i.get("SplitEntityId")} greater than Transaction Amount'}
                             return Response(custom, status=status.HTTP_400_BAD_REQUEST)
                         elif i['Amount'] < 0:
                             custom = {'message': f'Split Amount for {i.get("SplitEntityId")} is lesser than Zero'}
                             return Response(custom, status=status.HTTP_400_BAD_REQUEST)
-                        print(f'{initbalance}')
+                        # print(f'{initbalance}')
                 request.data['Balance'] = initbalance
                 if request.data['Balance'] < 0:
                     custom = {'message': 'Split sum greater than Transaction Amount'}
