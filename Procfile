@@ -1,0 +1,1 @@
+web: gunicorn Flutterwave.wsgi --log-file -
